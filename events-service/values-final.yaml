@@ -45,7 +45,7 @@ resources:
     memory: 16Mi
 
 env:
-  nodePort: "80"
+  nodePort: "8000"
   nodeIP: "0.0.0.0"
   actionTopic: "projects/journey-250514/topics/action-topic"
   errorTopic: "projects/journey-250514/topics/error-topic"
