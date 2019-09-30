@@ -35,7 +35,7 @@ spec:
               protocol: TCP
           env:
             - name: NODE_PORT
-              value: {{ .Values.env.nodePort | quote }} }}
+              value: {{ .Values.env.nodePort | quote }}
             - name: NODE_IP
               value: {{ .Values.env.nodeIP | quote }}
             - name: ACTION_TOPIC
