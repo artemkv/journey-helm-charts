@@ -1,0 +1,54 @@
+replicaCount: 2
+
+deployment:
+  maxUnavailable: 1
+  maxSurge: 1
+
+image:
+  repository: artemkv/journey-events-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
+    kubernetes.io/ingress.class: traefik
+  hosts:
+    - host: svc.artemkv.net
+      paths:
+        - /events
+
+  tls:
+    - secretName: events-service-tls
+      hosts:
+        - svc.artemkv.net
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 64Mi
+  requests:
+    cpu: 100m
+    memory: 16Mi
+
+env:
+  nodePort: 80
+  nodeIP: 0.0.0.0
+  actionTopic: projects/journey-250514/topics/action-topic
+  errorTopic: projects/journey-250514/topics/error-topic
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
