@@ -35,13 +35,13 @@ spec:
               protocol: TCP
           env:
             - name: NODE_PORT
-              value: {{ .Values.env.nodePort }}
+              value: {{ .Values.env.nodePort | quote }} }}
             - name: NODE_IP
-              value: {{ .Values.env.nodeIP }}
+              value: {{ .Values.env.nodeIP | quote }}
             - name: ACTION_TOPIC
-              value: {{ .Values.env.actionTopic }}
+              value: {{ .Values.env.actionTopic | quote }}
             - name: ERROR_TOPIC
-              value: {{ .Values.env.errorTopic }}
+              value: {{ .Values.env.errorTopic | quote }}
           livenessProbe:
             httpGet:
               path: /liveness

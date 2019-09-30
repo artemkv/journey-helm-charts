@@ -42,10 +42,10 @@ resources:
     memory: 16Mi
 
 env:
-  nodePort: 80
-  nodeIP: 0.0.0.0
-  actionTopic: projects/journey-250514/topics/action-topic
-  errorTopic: projects/journey-250514/topics/error-topic
+  nodePort: "80"
+  nodeIP: "0.0.0.0"
+  actionTopic: "projects/journey-250514/topics/action-topic"
+  errorTopic: "projects/journey-250514/topics/error-topic"
 
 nodeSelector: {}
 

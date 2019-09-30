@@ -10,3 +10,8 @@ Debug the helm chart
 ```
 helm install --debug --dry-run --name dryrun --values values-final.yaml .
 ```
+
+Install helm chart
+```
+helm install --name barcelona --values values-final.yaml .
+```

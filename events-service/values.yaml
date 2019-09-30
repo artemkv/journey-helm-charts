@@ -48,8 +48,8 @@ resources: {}
   #   memory: 128Mi
 
 env:
-  nodePort: 80
-  nodeIP: 0.0.0.0
+  nodePort: "80"
+  nodeIP: "0.0.0.0"
   # actionTopic:
   # errorTopic:
 
