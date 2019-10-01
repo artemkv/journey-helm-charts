@@ -23,7 +23,7 @@ service:
 ingress:
   enabled: true
   annotations:
-    # ingress.kubernetes.io/ssl-redirect: "true"
+    ingress.kubernetes.io/ssl-redirect: "true"
     traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
     kubernetes.io/ingress.class: traefik
   hosts:
@@ -31,10 +31,10 @@ ingress:
       paths:
         - /events
 
-  tls: []
-    #- secretName: events-service-tls
-    #  hosts:
-    #    - svc.artemkv.net
+  tls:
+    - secretName: events-service-tls
+      hosts:
+        - svc.artemkv.net
 
 resources:
   limits:
