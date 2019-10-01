@@ -31,10 +31,10 @@ ingress:
       paths:
         - /events
 
-  tls: []
-    #- secretName: events-service-tls
-    #  hosts:
-    #    - svc.artemkv.net
+  tls:
+    - secretName: events-service-tls
+      hosts:
+        - svc.artemkv.net
 
 resources:
   limits:
