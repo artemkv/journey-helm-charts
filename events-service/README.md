@@ -16,6 +16,11 @@ Install helm chart
 helm install --name barcelona --values values-final.yaml .
 ```
 
+Update helm chart
+```
+helm upgrade --recreate-pods barcelona .
+```
+
 Delete helm chart
 ```
 helm delete --purge barcelona
