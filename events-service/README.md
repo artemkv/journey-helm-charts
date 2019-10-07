@@ -13,7 +13,7 @@ helm install --debug --dry-run --name dryrun --values values-final.yaml .
 
 Install helm chart
 ```
-helm install --name barcelona --values values-final.yaml .
+helm install --name barcelona --values values-final.yaml --set=image.tag=<TAG> .
 ```
 
 Update helm chart

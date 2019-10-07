@@ -20,6 +20,11 @@ service:
   type: ClusterIP
   port: 80
 
+serviceAccount:
+  enabled: true
+  name: events-service-account
+  projectName: journey-250514
+
 ingress:
   enabled: true
   annotations:
