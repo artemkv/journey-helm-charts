@@ -18,7 +18,7 @@ helm install --name barcelona --values values-final.yaml .
 
 Update helm chart
 ```
-helm upgrade --recreate-pods barcelona .
+helm upgrade --recreate-pods barcelona --values values-final.yaml --set=image.tag=<TAG> .
 ```
 
 Delete helm chart
