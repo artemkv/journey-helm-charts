@@ -1,0 +1,62 @@
+replicaCount: 1
+
+deployment:
+  maxUnavailable: 1
+  maxSurge: 1
+
+image:
+  repository: artemkv/journey-stats-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+container:
+  port: 8000
+
+service:
+  type: ClusterIP
+  port: 80
+
+serviceAccount:
+  enabled: true
+  name: stats-service-account
+  projectName: journey-250514
+
+ingress:
+  enabled: true
+  annotations:
+    # ingress.kubernetes.io/ssl-redirect: "true"
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
+    kubernetes.io/ingress.class: traefik
+  hosts:
+    - host: svc.artemkv.net
+      paths:
+        - /stats
+
+  tls:
+    - secretName: stats-service-tls
+      hosts:
+        - svc.artemkv.net
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 64Mi
+  requests:
+    cpu: 100m
+    memory: 16Mi
+
+env:
+  nodePort: "8000"
+  nodeIP: "0.0.0.0"
+  actionSubscription: "projects/journey-250514/subscriptions/action-subscription"
+  errorSubscription: "projects/journey-250514/subscriptions/error-subscription"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
