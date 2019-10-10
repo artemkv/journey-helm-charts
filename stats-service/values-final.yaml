@@ -30,7 +30,7 @@ ingress:
   annotations:
     # ingress.kubernetes.io/ssl-redirect: "true"
     traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: nginx
   hosts:
     - host: svc.artemkv.net
       paths:
