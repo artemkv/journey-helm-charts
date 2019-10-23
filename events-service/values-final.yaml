@@ -41,6 +41,10 @@ ingress:
       hosts:
         - svc.artemkv.net
 
+cert:
+  ingressClass: nginx
+  issuer: letsencrypt-issuer
+
 resources:
   limits:
     cpu: 100m

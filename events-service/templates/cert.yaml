@@ -1,0 +1,27 @@
+{{- if .Values.ingress.tls }}
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: {{ include "events-service.fullname" . }}
+  labels:
+{{ include "events-service.labels" . | indent 4 }}
+spec:
+  secretName: {{ .Values.tls.secretName }}
+  dnsNames:
+  {{- range .Values.tls.hosts }}
+  - {{ .host | quote }}
+  {{- end }}
+  acme:
+    config:
+    - http01:
+        ingressClass: {{ .Values.cert.ingressClass }}
+      domains:
+      {{- range .Values.tls.hosts }}
+      - {{ .host | quote }}
+      {{- end }}
+  issuerRef:
+    name: {{ .Values.cert.issuer }}
+    # We can reference ClusterIssuers by changing the kind here.
+    # The default value is Issuer (i.e. a locally namespaced Issuer)
+    kind: Issuer
+{{- end }}
