@@ -8,7 +8,7 @@ metadata:
 spec:
   secretName: {{ .Values.cert.secretName }}
   dnsNames:
-  {{- range .Values.tls.hosts }}
+  {{- range .Values.ingress.tls.hosts }}
   - {{ .host | quote }}
   {{- end }}
   acme:
@@ -16,7 +16,7 @@ spec:
     - http01:
         ingressClass: {{ .Values.cert.ingressClass }}
       domains:
-      {{- range .Values.tls.hosts }}
+      {{- range .Values.ingress.tls.hosts }}
       - {{ .host | quote }}
       {{- end }}
   issuerRef:
