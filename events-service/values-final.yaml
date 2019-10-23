@@ -31,7 +31,7 @@ ingress:
     # ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target:  /$2
     kubernetes.io/ingress.class: nginx
-    certmanager.k8s.io/cluster-issuer: letsencrypt-issuer
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: svc.artemkv.net
       paths:
@@ -47,7 +47,7 @@ ingress:
 cert:
   secretName: events-service-tls
   ingressClass: nginx
-  issuer: letsencrypt-issuer
+  issuer: letsencrypt-prod
 
 resources:
   limits:
