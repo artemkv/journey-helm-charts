@@ -41,7 +41,10 @@ ingress:
       hosts:
         - svc.artemkv.net
 
+# Copied from examples, tls supports a list of secrets, not sure why
+# However, I don't really need it. So I will just allow using 1 certificate
 cert:
+  secretName: events-service-tls
   ingressClass: nginx
   issuer: letsencrypt-issuer
 

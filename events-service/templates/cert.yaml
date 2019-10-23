@@ -6,7 +6,7 @@ metadata:
   labels:
 {{ include "events-service.labels" . | indent 4 }}
 spec:
-  secretName: {{ .Values.tls.secretName }}
+  secretName: {{ .Values.cert.secretName }}
   dnsNames:
   {{- range .Values.tls.hosts }}
   - {{ .host | quote }}
